@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatCard, MatCardContent, MatCardImage, MatCardActions } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
+import { DialogOverviewExampleDialog } from '../contact-dialog/contact-dialog';
 
 @Component({
   selector: 'main-page',
@@ -24,4 +26,11 @@ export class MainPage{
 
     presentation3: string = "En dehors des aspects purement techniques, j'ai un grand sens de l'organisation et du travail d'équipe."
 
+    constructor(public dialog: MatDialog) {}
+
+    openDialog(): void {
+      const dialogRef = this.dialog.open(DialogOverviewExampleDialog, { width: '1000px' });
+
+      dialogRef.afterClosed().subscribe();
+    }
 }
